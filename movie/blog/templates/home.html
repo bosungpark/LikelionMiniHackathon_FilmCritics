@@ -4,9 +4,8 @@
     <div>
         {% for blog in blogs%}
         <div>
-          <h3>{{ blog.title }}</h3>
-          <p>{{ blog.writer}}</p>
-              {{ blog.body }}
+          <h3>{{ blog.title_kor }}</h3>
+          <img src="{{blog.poster_url}}" alt="">
         </div>
         {%endfor %}
     </div>
