@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Blog
 from django.core.paginator import Paginator
-# import requests
+import requests
 
 # Create your views here.
 def home(request):
@@ -15,11 +15,3 @@ def home(request):
     page= request.GET.get('page')
     paginated_blogs= paginator.get_page(page)
     return render(request, 'home.html', {'blogs': paginated_blogs})
-
-# def init_db(request):
-#     url= "http://3.36.240.145:3479/mutsa"
-#     res= requests.get(url)
-#     movies=res.json()['movies']
-#     for movie in movies:
-#         ##
-#     return redirect('home')
