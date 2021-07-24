@@ -48,4 +48,5 @@ def init_db(request):
 
 def detail(request, id):
     blog = get_object_or_404(Movies, pk=id)
-    return render(request, 'detail.html', {'blog':blog})
+    staffs = Staff.objects.all()
+    return render(request, 'detail.html', {'blog':blog}, {'staffs':staffs})

@@ -1,17 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
     {% block content %}
     <h1>{{blog.title}}</h1>
     <div>
-      {{blog.title_kor}} {{blog.title_eng}}
-      <p>{{blog.poster_url}}</p>
-      <p>{{blog.rating_aud}}</p>
-      <p>{{blog.rating_cri}}</p>
-      <p>{{blog.rating_net}}</p>
+      {{blog.title_kor}} {{blog.title_eng}} <br>
+      <img src="{{blog.poster_url}}" />
+      <p>관람객 평점 {{blog.rating_aud}}</p>
+      <p>평론가 평점 {{blog.rating_cri}}</p>
+      <p>네티즌 평점 {{blog.rating_net}}</p>
       <br>
-      <p>{{blog.genre}}</p>
-      <p>{{blog.showtimes}}</p>
-      <p>{{blog.rate}}</p>
-      <p>{{blog.release_date}}</p>
+      <p>장르 {{blog.genre}}</p>
+      <p>상영 시간 {{blog.showtimes}}</p>
+      <p>상영 등급 {{blog.rate}}</p>
+      <p>개봉일 {{blog.release_date}}</p>
+      <br>
+      <p>줄거리</p>
+      <p>{{blog.summary}}</p>
+    </div>
+
+    <div>
+      <p>인물 정보</p>
       
     </div>
     <hr />
