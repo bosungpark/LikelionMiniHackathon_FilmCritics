@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+    {% block content %}
+    <h1>{{blog.title}}</h1>
+    <div>
+      {{blog.title_kor}} {{blog.title_eng}}
+      <p>{{blog.poster_url}}</p>
+      <p>{{blog.rating_aud}}</p>
+      <p>{{blog.rating_cri}}</p>
+      <p>{{blog.rating_net}}</p>
+      <br>
+      <p>{{blog.genre}}</p>
+      <p>{{blog.showtimes}}</p>
+      <p>{{blog.rate}}</p>
+      <p>{{blog.release_date}}</p>
+      
+    </div>
+    <hr />
+    {% endblock %}
