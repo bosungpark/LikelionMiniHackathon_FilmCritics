@@ -1,9 +1,11 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import get_object_or_404, render , redirect
+from requests.api import get
 from .models import Movies
 from django.core.paginator import Paginator
 import requests
 # Create your views here.
 def home(request):
+    init_db(request)
     blogs= Movies.objects.all()
     query= request.GET.get('query')
     if query:
@@ -43,3 +45,7 @@ def init_db(request):
 
         
     return redirect('home')
+
+def detail(request, id):
+    blog = get_object_or_404(Movies, pk=id)
+    return render(request, 'detail.html', {'blog':blog})
