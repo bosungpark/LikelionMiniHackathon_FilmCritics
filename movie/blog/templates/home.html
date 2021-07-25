@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-              {{ blog.body }}
 {% load static %}
 {% block content %}
   <div>
@@ -10,8 +9,7 @@
           {% for blog in blogs%}
           <div class="col-md-3">
             <table class="table" style="list-style: square;">
-            <img src="{{blog.poster_url}}" alt="">
-                {{ blog.body }}
+              <a href="{%url 'blog:detail' blog.id %}"><img src="{{blog.poster_url}}" alt=""></a>
             <tr>
             <h6 style="margin-top: 10px; margin-bottom: 40PX;" ><a href="{%url 'blog:detail' blog.id %}" style="text-decoration: none; color: black;">{{ blog.title_kor }}</a></h6>
           </table>
