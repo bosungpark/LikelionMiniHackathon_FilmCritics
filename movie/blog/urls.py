@@ -7,5 +7,6 @@ app_name='blog'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('<int:id>', detail, name='detail'),
-    path('create_comment/', create_comment, name='create_comment')
+    path('create_comment/', create_comment, name='create_comment'),
+    path('db', init_db, name='init_db'),
 ]

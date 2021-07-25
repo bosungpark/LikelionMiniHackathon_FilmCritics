@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+              {{ blog.body }}
 {% load static %}
 {% block content %}
   <div>
@@ -24,16 +25,16 @@
     <div class="paginator">
       {% if blogs.has_previous %}
      
-      <a href="?page=1"  style="margin-right: 5px;">처음</a>
-      <a href="?page={{blogs.previous_page_number}}"  style="margin-right: 10px;">이전</a>
+      <strong><a href="?page=1"  style="margin-right: 5px; text-decoration: none; color: black;">처음</a></strong>
+      <strong><a href="?page={{blogs.previous_page_number}}"  style="margin-right: 10px; text-decoration: none; color: black;">이전</a></strong>
       {% endif %}
       <span>{{blogs.paginator.num_pages}}</span>
       <span>페이지 중에</span>
       <span>{{blogs.number}}</span>
       <span>페이지 입니다</span>
       {% if blogs.has_next %}
-      <a href="?page={{blogs.next_page_number}}"  style="margin-left: 10px;">다음</a>
-      <a href="?page={{blogs.paginator.num_pages}}" style="margin-left: 5px;">마지막</a>
+      <strong><a href="?page={{blogs.next_page_number}}"  style="margin-left: 10px; text-decoration: none; color: black;">다음</a></strong>
+      <strong><a href="?page={{blogs.paginator.num_pages}}" style="margin-left: 5px; text-decoration: none; color: black;">마지막</a></strong>
     
       {% endif %}
     </div>
