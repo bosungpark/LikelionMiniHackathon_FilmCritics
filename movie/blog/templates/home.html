@@ -2,18 +2,18 @@
 {% load static %}
 {% block content %}
   <div>
-    <img src = "{% static 'home_image.PNG' %}" alt = "" width="1114px">
-
     <div class="new-movie">
-      <h4 style="text-align: left; margin-top: 50px; margin-left: 30px; margin-bottom: 20px;">NEW & UPCOMING MOVIES</h4>
+      <h4 style="text-align: left; margin-top: 50px; margin-left: 30px; margin-bottom: 50px;">NEW & UPCOMING MOVIES</h4>
 
       <div class="row">
           {% for blog in blogs%}
           <div class="col-md-3">
+            <table class="table" style="list-style: square;">
             <img src="{{blog.poster_url}}" alt="">
                 {{ blog.body }}
-            <br>
-            <h6 style="margin-top: 30px;"><a href="{%url 'blog:detail' blog.id %}">{{ blog.title_kor }}</a></h6>
+            <tr>
+            <h6 style="margin-top: 10px; margin-bottom: 40PX;" ><a href="{%url 'blog:detail' blog.id %}" style="text-decoration: none; color: black;">{{ blog.title_kor }}</a></h6>
+          </table>
           </div>
           {% endfor %}
       </div>
@@ -21,7 +21,7 @@
     
     <br/>
 
-    <div class="paginator" style="margin-top: 20px;">
+    <div class="paginator">
       {% if blogs.has_previous %}
      
       <a href="?page=1"  style="margin-right: 5px;">처음</a>
@@ -37,7 +37,9 @@
     
       {% endif %}
     </div>
-    <img src = "{% static 'home_image_2.PNG' %}" alt = "" width="1114px" style="margin-top: 50px;">
+
+
+
   </div>
 
 {% endblock %}

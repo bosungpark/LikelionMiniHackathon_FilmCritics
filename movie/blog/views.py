@@ -14,7 +14,7 @@ def home(request):
     if query:
         blogs= Movies.objects.filter(title_kor__icontains=query)
 
-    paginator= Paginator(blogs, 4)
+    paginator= Paginator(blogs, 8)
     page= request.GET.get('page')
     paginated_blogs= paginator.get_page(page)
     return render(request, 'home.html', {'blogs': paginated_blogs})
