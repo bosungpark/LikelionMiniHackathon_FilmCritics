@@ -15,4 +15,38 @@
       
     </div>
     <hr />
+
+    <!-- 여기부터 코멘트 -->
+    <div>
+      {% if question.comment_set.count > 0 %}
+        {% for comment in question.comment_set.all %}
+          <span>{{ comment.content }}</span>
+          <span>
+            글쓴이: {{ comment.author }}
+        </span>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div>
+      <div>
+        {% for comment in comments %}
+        {{ comment.comment_user }}
+        {{ comment.comment_body }}
+        {{ comment.comment_date }}
+        <br>
+        {% endfor %}
+      </div>
+      
+        <form method="post" action="{% url 'blog:create_comment' %}">
+            {% csrf_token %}
+            <div>
+                <label for="content">댓글내용</label>
+                <input name="movie_id" value="{{blog.id}}" hidden>
+                <textarea name="comment_body">{{ form.content.value|default_if_none:'' }}</textarea>
+            </div>
+            <button type="submit">저장하기</button>
+        </form>
+    </div>
+    </div>
+
     {% endblock %}

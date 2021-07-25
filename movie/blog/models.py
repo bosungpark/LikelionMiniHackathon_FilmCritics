@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from account.models import CustomUser
 
 # Create your models here.
 class Movies(models.Model):
@@ -17,3 +19,13 @@ class Movies(models.Model):
         name= models.CharField(max_length=200)
         role= models.CharField(max_length=200)
         image_url= models.CharField(max_length=500)
+
+class Comment(models.Model):
+    movie = models.ForeignKey(Movies, null=True, on_delete=models.CASCADE, related_name="comments")
+    comment_user = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE)
+    comment_body = models.CharField(max_length=200)
+    comment_date = models.DateTimeField()
+    class Meta:
+        ordering = ['comment_date']
+
+    
