@@ -1,12 +1,25 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
 
-<h1>로그인 페이지</h1>
-<form action="{% url 'account:login' %}" method="POST">
+<head>
+  <style>
+    .login_div {width: 45%; border-radius: 60px; padding: 60px; 
+    border: 1px lightgray solid; background-color: whitesmoke;
+    position: relative; top: 250px; left: 300px; text-align: left;
+    }
+    .login_button { border: none; background: none; float: right;}
+    .login_h1 {font-weight: bolder;}
+  </style>
+</head>
+
+<div class="login_div">
+  <h1 class="login_h1">Login</h1> <br>
+  <form action="{% url 'account:login' %}" method="POST">
   {% csrf_token %}
   {{form.as_p}}
-  <button type="submit">로그인</button>
+  <button type="submit" class="login_button">Login</button>
 </form>
+</div>
+
 
 {% endblock %}

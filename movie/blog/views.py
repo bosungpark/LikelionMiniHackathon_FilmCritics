@@ -9,9 +9,6 @@ from requests.api import get
 def home(request):
     blogs= Movies.objects.all()
 
-    for blog in blogs:
-        print("blog: ",blog)
-
     query= request.GET.get('query')
     if query:
         blogs= Movies.objects.filter(title_kor__icontains=query)
@@ -19,7 +16,10 @@ def home(request):
     paginator= Paginator(blogs, 8)
     page= request.GET.get('page')
     paginated_blogs= paginator.get_page(page)
-    return render(request, 'home.html', {'blogs': paginated_blogs})
+    if query:
+        return render(request, 'home.html', {'blogs': paginated_blogs, 'query':query})
+    else:
+        return render(request, 'home.html', {'blogs': paginated_blogs})
 
 """ def detail(request, id): 
     blog = get_object_or_404(Movies, pk = id) 
@@ -58,10 +58,6 @@ def init_db(request):
         
     return redirect('home')
 
-# def detail(request, id):
-#     blog = get_object_or_404(Movies, pk=id)
-#     staffs = Staff.objects.all()
-#     return render(request, 'detail.html', {'blog':blog}, {'staffs':staffs})
 def detail(request, id): 
     blog = get_object_or_404(Movies, pk = id) 
     staffs = Staff.objects.filter(number=id)

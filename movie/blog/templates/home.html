@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <div>
+  <head>
+    <style>
+      body {background-color: rgb(233, 233, 233);}
+    </style>
+  </head>
+
+  <div style="background-color: white;">
+    <br> <br>
+    <img src="{% static 'Main.PNG' %}" alt="" width="1050px">
     <div class="new-movie">
       <h4 style="text-align: left; margin-top: 50px; margin-left: 30px; margin-bottom: 50px;">NEW & UPCOMING MOVIES</h4>
 
@@ -23,17 +31,21 @@
     <div class="paginator">
       {% if blogs.has_previous %}
      
-      <strong><a href="?page=1"  style="margin-right: 5px; text-decoration: none; color: black;">처음</a></strong>
-      <strong><a href="?page={{blogs.previous_page_number}}"  style="margin-right: 10px; text-decoration: none; color: black;">이전</a></strong>
+      <strong><a href="?page=1&query={{query}}"  style="margin-right: 5px; text-decoration: none; color: black;">처음</a></strong>
+      <strong><a href="?page={{blogs.previous_page_number}}&query={{query}}"  style="margin-right: 10px; text-decoration: none; color: black;">이전</a></strong>
       {% endif %}
       <span>{{blogs.paginator.num_pages}}</span>
       <span>페이지 중에</span>
       <span>{{blogs.number}}</span>
       <span>페이지 입니다</span>
       {% if blogs.has_next %}
-      <strong><a href="?page={{blogs.next_page_number}}"  style="margin-left: 10px; text-decoration: none; color: black;">다음</a></strong>
-      <strong><a href="?page={{blogs.paginator.num_pages}}" style="margin-left: 5px; text-decoration: none; color: black;">마지막</a></strong>
+      <strong><a href="?page={{blogs.next_page_number}}&query={{query}}"  style="margin-left: 10px; text-decoration: none; color: black;">다음</a></strong>
+      <strong><a href="?page={{blogs.paginator.num_pages}}&query={{query}}" style="margin-left: 5px; text-decoration: none; color: black;">마지막</a></strong>
       {% endif %}
-    </div>
+    </div> <br>
   </div>
+  
+  <footer style="text-align: center; margin-top: 40px; margin-bottom: 20px; text-align: center;">
+    Copyright © Fandango. All rights reserved. V3.1 Privacy Policy  Terms and Policies  Do Not Sell My Info  AdChoices
+  </footer>
 {% endblock %}
